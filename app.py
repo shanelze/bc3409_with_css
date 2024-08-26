@@ -3,7 +3,7 @@ import google.generativeai as palm
 import os
 import openai
 
-api = ""
+api = "AIzaSyC6XTNnm_O-BCRuyAKgrhIr73_LgrNa4uQ"
 palm.configure(api_key=api)
 model = {"model": "models/chat-bison-001"}
 
@@ -12,7 +12,8 @@ client = openai.OpenAI()
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET","POST"])
+#The @app.route decorator in Flask is used to bind a specific URL path to a Python functio
+@app.route("/", methods=["GET","POST"]) #POST: Used to send data to the server to create or update a resource. Typically used for submitting form data, uploading files, etc.
 def index():
     return(render_template("index.html"))
 
@@ -23,8 +24,8 @@ def ai_agent():
 @app.route("/ai_agent_reply", methods=["GET","POST"])
 def ai_agent_reply():
     q = request.form.get("q")
-    r = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+    r = client.chat.completions.create( #This is a method provided by the OpenAI Python library to generate a response from an OpenAI model.
+        model="gemini-1.5-flash",
         messages=[{"role": "user", "content": q}],
     )
     r = r.choices[0].message.content
