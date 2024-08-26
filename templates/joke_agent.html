@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial AI Agent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f3e7;
+            border-left: 5px solid #4CAF50;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Financial AI Agent</h2>
+
+    <!-- Input Form -->
+    <form action="/joke_agent" method="post">
+        <h4>Please enter your question:</h4>
+        <input type="text" name="q">
+        <input type="submit" value="Enter">
+    </form>
+
+    <!-- Display the Response if Available -->
+    {% if r %}
+    <div class="response">
+        <h4>Reply:</h4>
+        <p>{{ r }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Button to Go Back to Main -->
+    <form action="/" method="post">
+        <input type="submit" value="Main">
+    </form>
+</body>
+</html>
