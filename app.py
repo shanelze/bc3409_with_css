@@ -5,7 +5,7 @@ import openai
 
 api = "AIzaSyC6XTNnm_O-BCRuyAKgrhIr73_LgrNa4uQ"
 palm.configure(api_key=api)
-model = {"model": "models/chat-bison-001"}
+model = {"model": "models/gemini-1.5-flash"}
 
 os.environ["OPENAI_API_KEY"] = ""
 client = openai.OpenAI()
