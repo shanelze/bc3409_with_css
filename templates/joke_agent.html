@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial AI Agent</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,26 +58,32 @@
             text-align: left;
         }
     </style>
+
+    <!-- JavaScript function defined here -->
+    <script src="{{ url_for('static', filename='joke_agent.js') }}"></script>
+
 </head>
 <body>
     <h2>Financial AI Agent</h2>
 
-    <!-- Input Form -->
-    <form action="/joke_agent" method="post">
-        <h4>Please enter your question:</h4>
-        <input type="text" name="q">
-        <input type="submit" value="Enter">
-    </form>
-
-    <!-- Display the Response if Available -->
-    {% if r %}
-    <div class="response">
+    <div id="initialResponse" class="response">
+        {% if r %}
         <h4>Reply:</h4>
         <p>{{ r }}</p>
+        {% endif %}
     </div>
-    {% endif %}
 
-    <!-- Button to Go Back to Main -->
+    {# The {% if r %} statement is part of the Jinja2 templating language, which is used in Flask to render dynamic HTML content. Jinja2 allows you to embed Python-like expressions within your HTML to control what gets rendered on the page. #}
+
+    <!-- Display the response here -->
+    <div id="responseContainer" class="response">
+        <!-- The response from the server will be injected here -->
+    </div>
+
+    <!-- Button to generate a new response -->
+    <button onclick="generateNewResponse()">Generate New Response</button>
+
+    <!-- Button to go back to main -->
     <form action="/" method="post">
         <input type="submit" value="Main">
     </form>
